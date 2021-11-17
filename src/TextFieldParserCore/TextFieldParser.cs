@@ -168,6 +168,8 @@ namespace TextFieldParserCore
             }
         }
 
+        public bool IgnoreEmptyLines { get; set; } = true;
+
         /// *******************************************************************
         /// ;EndOfData
         /// <summary>
@@ -730,7 +732,7 @@ namespace TextFieldParserCore
 
             // Ignore empty or whitespace lines
             string TrimmedLine = line.Trim();
-            if (TrimmedLine.Length == 0)
+            if (TrimmedLine.Length == 0 && IgnoreEmptyLines)
                 return true;
 
             // Ignore comments
